@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Layer from "./Layer";
-import Neuron from "./Neuron";
 
 type Props = {};
 
@@ -12,9 +11,9 @@ const Network = (props: Props) => {
 
   // Layers -> Neurons -> Weights
 
-  const inputs = [50, 30]
+  const inputs = [2, 1, 3, 5, 1]
 
-  const hiddenLayers = [3, 4, 4, 2]
+  const hiddenLayers = [4, 4, 4, 1]
   
   const createLayers = (inputs: number[], hiddenLayers: number[]) => {
 
@@ -41,7 +40,7 @@ const Network = (props: Props) => {
         // Loops over the previous neurons: Makes connections & calculates weighted sum for neuron
         for (let k = 0; k < LayerNeurons[i].length; k++) {
 
-            const connectedNeuronWeight = Math.random() 
+            const connectedNeuronWeight = Math.random()
             const connectedNeuronValue = LayerNeurons[i][k].value
 
             // Adds a connection to the connections array
@@ -151,10 +150,14 @@ const Network = (props: Props) => {
       //   );
       // })} */}
 
+      console.log('sad');
   return (
     <div className="flex">
       {layers.map((layer: any, index: number) => {
-          <Layer neurons={layer} />
+
+        return (
+          <Layer neurons={layer} type={index === 0 ? "input" : "hidden"} />
+        )
       })}
     </div>
   );
