@@ -1,0 +1,6 @@
+.connection {
+    position: absolute;
+}
+.connectionArrow{
+    marker-end:url(#markerArrow);
+  }

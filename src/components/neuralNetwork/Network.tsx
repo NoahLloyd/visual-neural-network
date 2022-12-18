@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Layer from "./Layer";
 
+type Neuron = {key: string; value: number; bias: number; connections: { value: number; weight: number; key: string;}[]; }
+
 type Props = {};
 
 const Network = (props: Props) => {
@@ -11,7 +13,7 @@ const Network = (props: Props) => {
 
   // Layers -> Neurons -> Weights
 
-  const inputs = [2, 1, 3, 5, 1]
+  const inputs = [2, 5, 1]
 
   const hiddenLayers = [4, 4, 4, 1]
   
@@ -40,7 +42,7 @@ const Network = (props: Props) => {
         // Loops over the previous neurons: Makes connections & calculates weighted sum for neuron
         for (let k = 0; k < LayerNeurons[i].length; k++) {
 
-            const connectedNeuronWeight = Math.random()
+            const connectedNeuronWeight = Math.random() / 1.5
             const connectedNeuronValue = LayerNeurons[i][k].value
 
             // Adds a connection to the connections array
@@ -64,7 +66,15 @@ const Network = (props: Props) => {
 
 
   let layers = createLayers(inputs, hiddenLayers);
-  console.log(layers)
+console.log(layers)
+  // Gets the highest value to color the neurons relatively
+  let highestValue = 0;
+
+  layers.forEach((layer: Neuron[]) => {
+    layer.forEach((neuron: Neuron) => {
+      if (neuron.value > highestValue) highestValue = neuron.value; 
+    })
+  })
 
   // Makes array that contains the same input the amount of times it says in layers[0]
   // for (let i = 0; i < layers[0]; i+)
@@ -150,13 +160,12 @@ const Network = (props: Props) => {
       //   );
       // })} */}
 
-      console.log('sad');
   return (
     <div className="flex">
       {layers.map((layer: any, index: number) => {
 
         return (
-          <Layer neurons={layer} type={index === 0 ? "input" : "hidden"} />
+          <Layer neurons={layer} type={index === 0 ? "input" : "hidden"} highestValue={highestValue} />
         )
       })}
     </div>
