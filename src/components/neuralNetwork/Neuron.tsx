@@ -47,12 +47,14 @@ function Neuron(props: Props) {
     return result;
   };
 
+  const newValue = props.type === "input" ? props.properties.value : activationFunction(props.properties.value, props.activationFunction)
+
   const valueToColor = (value: number) => {
     // Change shade of gray depending on number
     const multiplier = 255 / props.highestValue;
 
-    return `rgb(${value * multiplier}, ${value * multiplier}, ${
-      value * multiplier
+    return `rgb(${newValue * multiplier}, ${newValue * multiplier}, ${
+      newValue * multiplier
     })`;
   };
 
@@ -82,16 +84,14 @@ function Neuron(props: Props) {
         style={{
           backgroundColor: valueToColor(props.properties.value),
           color:
-            props.properties.value > props.highestValue / 2
+            newValue > props.highestValue / 2
               ? "#181818"
               : "#eee",
           borderColor: "#fff",
         }}
       >
         <div>
-          {props.type === "input" ? props.properties.value : Math.round(
-            activationFunction(props.properties.value, props.activationFunction) * 10
-          ) / 10}
+          {Math.round(newValue*10)/10}
           {/* // !TODO Add on hover element that shows value, bias, etc. */}
         </div>
         {props.properties.connections.map((connection) => {
