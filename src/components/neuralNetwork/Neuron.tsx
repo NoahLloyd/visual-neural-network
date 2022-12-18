@@ -58,6 +58,24 @@ function Neuron(props: Props) {
 
   // if (props.type === "input") {
     return (
+    //   <div
+    //     key={Math.random().toString() + Math.random().toString()}
+    //     className="neuron"
+    //     style={{
+    //       backgroundColor: valueToColor(props.properties.value),
+    //       color:
+    //         props.properties.value > props.highestValue / 2
+    //           ? "#181818"
+    //           : "#eee",
+    //       borderColor: "#fff",
+    //     }}
+    //   >
+    //     {Math.round(props.properties.value)}
+    //     {/* // !TODO Add on hover element that shows value, bias, etc. */}
+    //   </div>
+    // );
+//   } else {
+//     return (
       <div
         key={Math.random().toString() + Math.random().toString()}
         className="neuron"
@@ -70,35 +88,17 @@ function Neuron(props: Props) {
           borderColor: "#fff",
         }}
       >
-        {Math.round(props.properties.value)}
-        {/* // !TODO Add on hover element that shows value, bias, etc. */}
+        <div>
+          {props.type === "input" ? props.properties.value : Math.round(
+            activationFunction(props.properties.value, props.activationFunction) * 10
+          ) / 10}
+          {/* // !TODO Add on hover element that shows value, bias, etc. */}
+        </div>
+        {props.properties.connections.map((connection) => {
+          return <div></div>;
+        })}
       </div>
     );
-//   } else {
-//     return (
-//       <div
-//         key={Math.random().toString() + Math.random().toString()}
-//         className="neuron"
-//         style={{
-//           backgroundColor: valueToColor(props.properties.value),
-//           color:
-//             props.properties.value > props.highestValue / 2
-//               ? "#181818"
-//               : "#eee",
-//           borderColor: "#fff",
-//         }}
-//       >
-//         <div>
-//           {Math.round(
-//             activationFunction(props.properties.value, props.activationFunction) * 10
-//           ) / 10}
-//           {/* // !TODO Add on hover element that shows value, bias, etc. */}
-//         </div>
-//         {props.properties.connections.map((connection) => {
-//           return <div></div>;
-//         })}
-//       </div>
-//     );
 //   }
 }
 
