@@ -1,0 +1,30 @@
+.networkControls {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 1.5rem;
+    background-color: #999;
+    width: 100vw;
+}
+
+.networkControls select {
+    padding: 0.5rem 1rem 0.5rem 0.5rem;
+    border-radius: 5px;
+    background-color: white;
+}
+.networkControls select:focus {
+    outline: rgb(79, 79, 79) solid 2px;
+}
+.networkControls select:hover {
+    cursor: pointer;
+}
+.networkControls select option {
+    font-size: 1.2rem;
+}
+
+.settingsBarInput {
+    padding: 0.4rem 0.5rem 0.3rem 0.5rem;
+}
+.settingsBarInput:focus {
+    outline: rgb(79, 79, 79) solid 2px;
+}
