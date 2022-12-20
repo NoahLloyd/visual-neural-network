@@ -51,7 +51,7 @@ function Neuron(props: Props) {
 
   const valueToColor = (value: number) => {
     // Change shade of gray depending on number
-    const multiplier = 255 / props.highestValue;
+    const multiplier = 255 / activationFunction(props.highestValue, props.activationFunction);
 
     return `rgb(${newValue * multiplier}, ${newValue * multiplier}, ${
       newValue * multiplier

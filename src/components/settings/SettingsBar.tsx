@@ -19,11 +19,11 @@ const SettingsBar = (props: Props) => {
         <div className="flex-col flex mr-8">
           <label htmlFor="ActivationFunctionSelect">Activation function</label>
           <select id="ActivationFunctionSelect" onChange={(e) => props.setActivationFunction(e.target.value)}>
+            <option value="Linear">Linear</option>
             <option value="Tanh">Tanh</option>
             <option value="Sigmoid">Sigmoid</option>
             <option value="ReLU">ReLU</option>
             <option value="Leaky ReLU">Leaky ReLU</option>
-            <option value="Linear">Linear</option>
             <option value="Binary">Binary</option>
           </select>
         </div>

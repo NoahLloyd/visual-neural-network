@@ -13,7 +13,7 @@ type Neuron = {
 function App() {
 
   // Todo: add different activation function for output layer
-  const [activationFunction, setActivationFunction] = useState("Tanh");
+  const [activationFunction, setActivationFunction] = useState("Linear");
 
   const [inputs, setInputs] = useState({ array: [1, 2, 3], string: "1,2,3" });
 
